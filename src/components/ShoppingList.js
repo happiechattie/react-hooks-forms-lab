@@ -20,17 +20,18 @@ function ShoppingList(props) {
   function handleSearchChange(e) {
     const value = e.target.value;
     setSearch(value);
+    console.log(value);
   }
 
   const arrayToDisplay = filteredByCategory.filter(item => {
     if (search === '') return true;
-    else return (item.name.slice(0, search.length) === search)
+    else {return (item.name.includes(search))}
   })
 
   return (
     <div className="ShoppingList">
       <ItemForm onSubmitForm={props.onSubmitForm}/>
-      <Filter onSearchChange={handleSearchChange} onCategoryChange={handleCategoryChange} />
+      <Filter search={search} onSearchChange={handleSearchChange} onCategoryChange={handleCategoryChange} />
       <ul className="Items">
         {arrayToDisplay.map((item) => (
           <Item key={item.id} name={item.name} category={item.category} />

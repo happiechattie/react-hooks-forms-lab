@@ -3,16 +3,20 @@ import { v4 as uuid } from "uuid";
 
 function ItemForm(props) {
 
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("")
+  const [newFood, setNewFood] = useState({});
+
+  function changeItem(e){
+    const newItem = {id: uuid(), name: e.target.querySelector('input').value, category: e.target.querySelector('select').value}
+    setNewFood(newItem);
+    return newItem;
+  }
 
   function makeItem(e){
     e.preventDefault();
-    setName(e.target.querySelector('input').value);
-    console.log(name);
-    setCategory(e.target.querySelector('select').value);
-    const newItem = {id: uuid(), name: name, category: category}
-    props.onSubmitForm(newItem);
+    Promise.resolve(newFood).then(() => changeItem(e)).then((newItem) => {
+      console.log(newItem);
+      props.onSubmitForm(newItem);
+    })
   }
 
   return (
