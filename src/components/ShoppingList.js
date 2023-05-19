@@ -27,21 +27,9 @@ function ShoppingList(props) {
     else return (item.name.slice(0, search.length) === search)
   })
 
-  function handleSubmit(e){
-    e.preventDefault();
-
-    const name = e.target.querySelector('input').value;
-
-    const category = e.target.querySelector('select').value;
-
-    props.items.push(props.addItem(name, category));
-
-    e.target.reset();
-  }
-
   return (
     <div className="ShoppingList">
-      <ItemForm onSubmitForm={handleSubmit}/>
+      <ItemForm onSubmitForm={props.onSubmitForm}/>
       <Filter onSearchChange={handleSearchChange} onCategoryChange={handleCategoryChange} />
       <ul className="Items">
         {arrayToDisplay.map((item) => (

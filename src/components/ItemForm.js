@@ -3,8 +3,20 @@ import { v4 as uuid } from "uuid";
 
 function ItemForm(props) {
 
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("")
+
+  function makeItem(e){
+    e.preventDefault();
+    setName(e.target.querySelector('input').value);
+    console.log(name);
+    setCategory(e.target.querySelector('select').value);
+    const newItem = {id: uuid(), name: name, category: category}
+    props.onSubmitForm(newItem);
+  }
+
   return (
-    <form onSubmit={props.onSubmitForm} className="NewItem">
+    <form className="NewItem" onSubmit={makeItem}>
       <label>
         Name:
         <input type="text" name="name" />
