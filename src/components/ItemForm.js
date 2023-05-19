@@ -4,7 +4,7 @@ import { v4 as uuid } from "uuid";
 function ItemForm(props) {
 
   return (
-    <form onSubmit={props.onHandleSubmit, props.onHandleNewItemCategory, props.onHandleNewName} className="NewItem">
+    <form onSubmit={props.onSubmitForm} className="NewItem">
       <label>
         Name:
         <input type="text" name="name" />
