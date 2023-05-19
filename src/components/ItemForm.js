@@ -15,7 +15,7 @@ function ItemForm(props) {
     e.preventDefault();
     Promise.resolve(newFood).then(() => changeItem(e)).then((newItem) => {
       console.log(newItem);
-      props.onSubmitForm(newItem);
+      props.onItemFormSubmit(newItem);
     })
   }
 

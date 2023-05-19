@@ -30,7 +30,7 @@ function ShoppingList(props) {
 
   return (
     <div className="ShoppingList">
-      <ItemForm onSubmitForm={props.onSubmitForm}/>
+      <ItemForm onItemFormSubmit={props.onItemFormSubmit}/>
       <Filter search={search} onSearchChange={handleSearchChange} onCategoryChange={handleCategoryChange} />
       <ul className="Items">
         {arrayToDisplay.map((item) => (
