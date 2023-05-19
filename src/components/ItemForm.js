@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import { v4 as uuid } from "uuid";
 
 function ItemForm(props) {
+
   return (
-    <form className="NewItem">
+    <form onSubmit={props.onHandleSubmit, props.onHandleNewItemCategory, props.onHandleNewName} className="NewItem">
       <label>
         Name:
         <input type="text" name="name" />
